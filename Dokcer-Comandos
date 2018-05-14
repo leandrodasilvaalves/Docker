@@ -50,41 +50,6 @@ docker inspect containerId - dá pra ver uma lista de processos do container em 
 
 docker container run -d --name ex-daemon-basic -p 8080:80 -v $(pwd)/html:/usr/share/nginx/html nginx    - rodar container em background mapeando para uma pasta do host
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 docker stats containerId - ver processos como consumo de cpu e memória
 
 docker exec containerId comando (ps -ef) - para executar um comando dentro do container
@@ -117,6 +82,42 @@ docker run -ti --cpu-shares 512 debian /bin/bash    - limitar o uso do cpu. No e
 docker inspect containerId | grep -i cpu   - verificar o uso do cpu.
 
 docker update --cpu-shares 512 containerId  - atualizar o limite de cpu de um container em excecução.
+
+docker image build --build-arg S3_BUCKET=myapp -t ex-build-arg .     - fazer build de uma imagem a partir do Dockerfile e passando parâmetros
+
+docker container run ex-build-arg bash -c 'echo $S3_BUCKET'     - criar container a partir de imagem com argumentos.
+
+docker image inspect --format="{{index .Config.Labels \"maintainer\"}}" ex-build-arg    - filtrar inspect
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
