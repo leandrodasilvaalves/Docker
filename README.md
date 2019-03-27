@@ -83,7 +83,10 @@ Para executar um comando dentro do container
 ```
 docker exec <containerId> <comando> (ps -ef)
 ```
-
+### Criar volume docker definindo o diretório do host
+```
+docker volume create --name volume-teste -o type=none -o device=$(pwd)/diretorio-teste -o o=bind
+```
 
 EXEMPLO BASICO DE dockerfile
 ```
